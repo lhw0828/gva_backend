@@ -2,6 +2,7 @@ package initialize
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/bbs"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/video"
 	"os"
 
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
@@ -12,10 +13,8 @@ import (
 	"gorm.io/gorm"
 )
 
-/*
-*
-将gorm加载对应的model，生成数据库
-*/
+// 将gorm加载对应的model，生成数据库
+
 func Gorm() *gorm.DB {
 	switch global.GVA_CONFIG.System.DbType {
 	case "mysql":
@@ -60,6 +59,8 @@ func RegisterTables() {
 		example.ExaFileUploadAndDownload{},
 		// 生成bbs库
 		bbs.XkBbs{},
+		// 自动生成video表
+		video.XkVideo{},
 	)
 	if err != nil {
 		global.GVA_LOG.Error("register table failed", zap.Error(err))

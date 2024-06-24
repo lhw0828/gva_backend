@@ -44,6 +44,7 @@ func Routers() *gin.Engine {
 	exampleRouter := router.RouterGroupApp.Example
 	// 注册路由
 	xkBbsRouter := router.RouterGroupApp.XkBbs
+	xkVideoRouter := router.RouterGroupApp.XkVideo
 
 	// 如果想要不使用nginx代理前端网页，可以修改 web/.env.production 下的
 	// VUE_APP_BASE_API = /
@@ -82,6 +83,7 @@ func Routers() *gin.Engine {
 	// 自定义的路由初始化
 	{
 		xkBbsRouter.InitXkBbsRouter(PublicGroup)
+		xkVideoRouter.InitXkVideoRouter(PublicGroup)
 	}
 
 	{
