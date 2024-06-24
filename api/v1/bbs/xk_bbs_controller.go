@@ -14,7 +14,9 @@ type XkBbsApi struct{}
 
 func (e *XkBbsApi) GetXkBbs(c *gin.Context) {
 	var xkBbs bbs.XkBbs
-	err := c.ShouldBindJSON(&xkBbs)
+	// 绑定参数
+	err := c.ShouldBindQuery(&xkBbs)
+	// 如果参数没有直接报错
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
